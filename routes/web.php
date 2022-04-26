@@ -15,10 +15,10 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/migrate', function () {
+$router->get('/migrate', function () use ($router) {
     return \Illuminate\Support\Facades\Artisan::call('migrate:fresh');
 });
-$router->get('/seed', function () {
+$router->get('/seed', function () use ($router) {
     return \Illuminate\Support\Facades\Artisan::call('db:seed');
 });
 
