@@ -15,6 +15,14 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+$router->get('/migrate', function () {
+    return \Illuminate\Support\Facades\Artisan::call('migrate:fresh');
+});
+$router->get('/seed', function () {
+    return \Illuminate\Support\Facades\Artisan::call('db:seed');
+});
+
+
 $router->group(['prefix' => 'api'], function ($router) {
     $router->post('login', 'AuthController@login');
 
